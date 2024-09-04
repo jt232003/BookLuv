@@ -46,12 +46,12 @@ This is a web-based Library Management System developed using Flask for the back
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/library-management-system.git
+    git clone https://github.com/jt232003/BookLuv.git
     ```
    
 2. **Navigate to the Project Directory**:
     ```bash
-    cd library-management-system
+    cd BookLuv
     ```
 
 3. **Create a Virtual Environment**:
