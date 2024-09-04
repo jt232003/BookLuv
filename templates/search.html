@@ -1,0 +1,21 @@
+<div class="searchbar">
+    <form>
+        <select name="param" id="param">
+            {% for param in parameters %}
+                {% if param == parameter %}
+                <option value="{{parameters[param]}}" selected>{{parameters[param]}}</option>
+                {% else %}
+                <option value="{{parameters[param]}}">{{parameters[param]}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="text" id="search" name="search" placeholder="Search" value="{{value}}">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<style>
+.searchbar{align-items: center;
+justify-content: center;
+display: flex;}
+</style>

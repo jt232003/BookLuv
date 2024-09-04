@@ -1,0 +1,102 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>User Dashboard</h1>
+<h1>Welcome {{user.name.capitalize()}}</h1>
+{% include 'search.html' with context %}
+<h3 id="book_counts">Book Remaining :{{(book_count-5)*(-1)}}</h3>
+<div class="section-list">
+{% for i in Section %}
+  <div class="section">
+  <h2>{{i.section_name}}</h2>
+    <div class="book-list">
+    {% for j in i.books %}
+    {% if (book_search and book_search.lower() in j.book_name.lower()) or (author_search and author_search.lower() in j.author.lower()) or (not book_search and not author_search) %}
+      <div class="box">
+      <h4>{{j.book_name}}</h4>
+        <div class="book">
+          <div class="book-details">
+            <p>Book content :{{j.content}}</p>
+            <p>Author :{{j.author}}</p>
+            <a href="{{url_for('view_feedback', book_id=j.id)}}"><p>View feedback</p></a>
+            <div class="add-to-cart">
+              <form action="{{url_for('add_to_pending_request', book_id=j.id)}}" method="POST">
+                {% if book_count < 5 %}
+              <input type="submit" name="btn" value="Request Issue">
+              Return Date: <input type="date" name="return_date" required>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
+{% block styling %}
+<style>
+.section-list{display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;}
+
+.section{margin: auto;
+  width: auto;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;}
+
+.book-list{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;}
+
+.book{width: 400px;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: lightpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;}
+
+.add-to-cart{display: flex;
+  align-items: center;
+  flex-direction: column;}
+
+.box{border: 5px solid black;
+  margin: 1%;
+padding: 10px;
+width: fit-content;
+height: fit-content;
+display: block;}
+
+h2{font-family: 'Times New Roman', Times, serif;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+justify-content: center;
+color: blue;}
+
+h1{text-align: center;
+justify-content: center;}
+
+h3{
+  margin: 10px;
+  padding: 20px;
+}
+
+</style>
+{% endblock %}

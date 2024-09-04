@@ -1,0 +1,71 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Books available in {{section.section_name}} Section</h1><br><br>
+<table border="1" class="center">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Section id</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in section.books %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.book_name}}</td>
+            <td>{{i.section_id}}</td>
+            <td>{{i.content}}</td>
+            <td>{{i.author}}</td>
+            <td>
+                #
+                <a href="{{url_for('open',id=i.id)}}">View PDF</a>
+                <!-- {% for pdf_file in pdf_files %}
+                    <li>
+                        {{ pdf_file }}
+                            <a href="{{ url_for('open_book', id=pdf_file) }}" target="_blank">View PDF</a>
+                    </li>
+                {% endfor %} -->
+                #
+                <a href="{{url_for('edit_book', id=i.id)}}">
+                    Edit
+                </a>
+                #
+                <a href="{{url_for('delete_book', id=i.id)}}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a style="display:block;text-align:center" href="{{url_for('add_book', id = section.id)}}">
+    +Add Book
+</a><br><br>
+<a style="display:block;text-align:center" href="{{url_for('admin_dashboard')}}">
+    Go to librarian dashboard
+</a>
+{% endblock %}
+
+{% block styling %}
+<style>
+    table, th, td {
+        border: 3px solid black;
+      }
+      h2, table {
+        text-align: center;
+      }
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+</style>
+{% endblock %}

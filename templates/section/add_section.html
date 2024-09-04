@@ -1,0 +1,21 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Add New Section</h1>
+<form method="POST">
+    Name of new Section :
+    <input type="text" name="section_name" id="section_name">
+    Date :
+    <input type="date" name="date_created" id="date_created">
+    Description :
+    <input type="text" name="description" id="description">
+    <input type="submit" value="add section">
+</form>
+{% endblock %}
+
+{% block styling %}
+{% endblock %}

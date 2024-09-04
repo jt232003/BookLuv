@@ -1,0 +1,79 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Reading List</h1>
+<h2>Hello {{user.name.capitalize()}}</h2>
+<h5>Pending Request</h5>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Return Date</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in carts %}
+            <td>{{loop.index}}</td>
+            <td>{{i.Book.book_name}}</td>
+            <td>{{i.Book.author}}</td>
+            <td>{{i.return_date}}</td>
+            <td>
+                #
+                <a href="{{url_for('delete_from_pending_request', book_id=i.book_id)}}" >
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h5>Issued Books</h5>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>Book</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        {% for i in issued_books_user %}
+            <td>{{loop.index}}</td>
+            <td>{{i.Book.book_name}}</td>
+            <td >{{i.issue_date }}</td>
+            <td>{{i.return_date}}</td>
+            <td>
+                #
+                <a href="{{url_for('open_book_user', book_id=i.book_id)}}">
+                    Open
+                </a>
+                #
+                <a href="{{url_for('return_book', book_id=i.book_id)}}">
+                    Return
+                </a>
+                {% if i.Book.id not in feedbacks_id %}
+                #
+                <a href="{{url_for('feedback', book_id=i.book_id)}}">
+                    Feedback
+                </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+{% block styling %}
+<style>
+</style>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<div class="login">
+<h1>Login Page</h1><br><br>
+<form method="POST" action="/login">
+    Username : 
+    <input type="text" name="username" id="username" required><br><br>
+    Password:
+    <input type="password" name="password" id="password" required><br><br>
+    <input type="submit"><br><br>
+</form>
+<a href="/admin-login">Login as librarian</a>
+</div>
+{% endblock %}
+
+{% block styling %}
+<style>
+    .login{
+        margin-top: 100px;
+        justify-content: center;
+        text-align: center;
+        border: 3px solid black;
+
+    }
+    h1{text-align: center;
+        justify-content: center;}
+</style>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<a style="display:block;text-align:center" href="{{url_for('admin_dashboard')}}">
+    Go to librarian dashboard
+</a>
+<h3>Pending Request</h3>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>User</th>
+            <th>Book</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in mybooks %}
+            <td>{{loop.index}}</td>
+            <td>{{i.User.username}}</td>
+            <td>{{i.Book.book_name}}</td>
+            <form method="POST" action="{{url_for('accept_issue_request', book_id=i.id)}}">
+                <td>Default Issue date :{{i.issue_date }}<br><input type="date" name="issue_date" required></td>
+                <td>{{i.return_date}}</td>
+                <td>
+                    #
+                    <input type="submit" value="Accept">
+                    #
+                    <a href="{{url_for('reject_issue_request', book_id=i.book_id)}}"><input type="button" value="Reject"></a>
+                </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Issued Books</h3>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>User</th>
+            <th>Book</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in issuedbooks %}
+            <td>{{loop.index}}</td>
+            <td>{{i.User.username}}</td>
+            <td>{{i.Book.book_name}}</td>
+            <td >{{i.issue_date }}</td>
+            <td>{{i.return_date}}</td>
+            <td>
+                #
+                <a href="{{url_for('revoke', book_id=i.book_id)}}">
+                    Revoke
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+{% block styling %}
+<style>
+</style>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Adding new book for section {{section.section_name}}</h1><br><br>
+<form method="POST" enctype="multipart/form-data">
+    Name of new Book :
+    <input type="text" name="book_name" id="book_name">
+    Content :
+    <input type="text" name="content" id="content">
+    Author :
+    <input type="text" name="author" id="author">
+    Upload PDF :
+    <input type="file" name="file" accept=".pdf" required><br><br>
+    <input type="submit" value="add book">
+</form>
+{% endblock %}
+
+{% block styling %}
+{% endblock %}

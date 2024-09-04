@@ -1,0 +1,16 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Delete Section</h1>
+<form method="POST">
+    <h3>Are you sure you want to delete {{section.section_name}} section</h3>
+    <input type="submit" value="delete">
+</form>
+{% endblock %}
+
+{% block styling %}
+{% endblock %}

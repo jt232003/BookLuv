@@ -1,0 +1,21 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Editing book {{book.book_name}}</h1><br><br>
+<form method="POST">
+    Name of Book :
+    <input type="text" name="book_name" id="book_name">
+    Content :
+    <input type="text" name="content" id="content">
+    Author :
+    <input type="text" name="author" id="author">
+    <input type="submit" value="Edit book">
+</form>
+{% endblock %}
+
+{% block styling %}
+{% endblock %}

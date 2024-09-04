@@ -1,0 +1,31 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Here you can view feedback for {{bookname.book_name}}</h1>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>User</th>
+            <th>Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in feedbacks %}
+            <td>{{loop.index}}</td>
+            <td>{{i.User.username}}</td>
+            <td>{{i.feedback}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block styling %}
+<style>
+</style>
+{% endblock %}

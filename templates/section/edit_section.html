@@ -1,0 +1,22 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>Edit Section</h1>
+<h3>Section name that is edited : {{section.section_name}}</h3>
+<form method="POST">
+    Name of Section :
+    <input type="text" name="section_name" id="section_name">
+    Date :
+    <input type="date" name="date_created" id="date_created">
+    Description :
+    <input type="text" name="description" id="description">
+    <input type="submit" value="Edit section">
+</form>
+{% endblock %}
+
+{% block styling %}
+{% endblock %}

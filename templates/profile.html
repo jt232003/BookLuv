@@ -1,0 +1,22 @@
+{% extends 'common-layout.html' %}
+
+{% block title %}
+Bookluv
+{% endblock %}
+
+{% block content %}
+<h1>User Profile Page</h1>
+<h3>User Details</h3>
+<h4>Name : {{user.name.capitalize()}}<br><br>
+Username: {{user.username}}<br><br>
+</h4>
+{% endblock %}
+
+{% block styling %}
+<style>
+    h4, h3, h1{margin:auto;
+    text-align: center;
+    justify-content: center;
+    padding: 60px;}
+</style>
+{% endblock %}
