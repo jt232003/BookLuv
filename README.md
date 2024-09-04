@@ -87,3 +87,7 @@ This is a web-based Library Management System developed using Flask for the back
 
 For a detailed walkthrough of the project, you can view the presentation video [here](https://drive.google.com/file/d/1EEa24ay6VOimy4v8iw61IE2VeE362Rc9/view?usp=sharing).
 
+If you have any questions or suggestions, feel free to reach out:
+
+- **LinkedIn**: [Jalaj Trivedi](https://www.linkedin.com/in/jalaj-trivedi-961b62221)
+
